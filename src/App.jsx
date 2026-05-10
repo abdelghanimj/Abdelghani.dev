@@ -10,15 +10,43 @@ import "./styles/global.css";
 
 export default function App() {
   return (
-    <>
+    <div className="bg-gray-950 text-white scroll-smooth overflow-x-hidden">
+
+      {/* NAVBAR */}
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Education />
-      <Contact />
+
+      {/* SECTIONS */}
+      <main className="space-y-0">
+
+        <section id="home">
+          <Hero />
+        </section>
+
+        <section id="about" className="scroll-mt-20">
+          <About />
+        </section>
+
+        <section id="skills" className="scroll-mt-20">
+          <Skills />
+        </section>
+
+        <section id="projects" className="scroll-mt-20">
+          <Projects />
+        </section>
+
+        <section id="education" className="scroll-mt-20">
+          <Education />
+        </section>
+
+        <section id="contact" className="scroll-mt-20">
+          <Contact />
+        </section>
+
+      </main>
+
+      {/* FOOTER */}
       <Footer />
-    </>
+
+    </div>
   );
 }

@@ -3,90 +3,72 @@ import { useState } from "react";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const links = [
+    { name: "Accueil", id: "home" },
+    { name: "À propos", id: "about" },
+    { name: "Compétences", id: "skills" },
+    { name: "Projets", id: "projects" },
+    { name: "Formation", id: "education" },
+    { name: "Contact", id: "contact" },
+  ];
+
+  const handleClick = (id) => {
+    setIsOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 shadow-lg">
+    <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/10 border-b border-white/20 shadow-lg">
       <div className="container mx-auto flex justify-between items-center p-4">
+
         {/* Logo */}
-        <div className="font-extrabold text-2xl text-white drop-shadow-lg">Abdelghani</div>
-
-        {/* Links Desktop */}
-        <ul className="hidden md:flex gap-8 text-white font-semibold">
-          <li>
-            <a href="#home" className="relative group px-2 py-1 hover:text-yellow-300 transition">
-              Accueil
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all group-hover:w-full rounded"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#about" className="relative group px-2 py-1 hover:text-yellow-300 transition">
-              À propos
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all group-hover:w-full rounded"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#skills" className="relative group px-2 py-1 hover:text-yellow-300 transition">
-              Compétences
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all group-hover:w-full rounded"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#projects" className="relative group px-2 py-1 hover:text-yellow-300 transition">
-              Projets
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all group-hover:w-full rounded"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#education" className="relative group px-2 py-1 hover:text-yellow-300 transition">
-              Formation
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all group-hover:w-full rounded"></span>
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="relative group px-2 py-1 hover:text-yellow-300 transition">
-              Contact
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-yellow-300 transition-all group-hover:w-full rounded"></span>
-            </a>
-          </li>
-        </ul>
-
-        {/* Toggle Button Mobile */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white text-3xl focus:outline-none"
-          >
-            {isOpen ? "✖" : "☰"}
-          </button>
+        <div className="text-2xl font-extrabold text-white tracking-wide hover:scale-105 transition">
+          Abdelghani<span className="text-cyan-300">.dev</span>
         </div>
-      </div>
 
-      {/* Links Mobile */}
-      {isOpen && (
-        <ul className="md:hidden bg-gradient-to-r from-purple-600 via-blue-500 to-cyan-400 text-white flex flex-col gap-4 p-6 animate-fade-in">
-          {["Accueil", "À propos", "Compétences", "Projets", "Formation", "Contact"].map((item, idx) => (
-            <li key={idx}>
-              <a
-                href={`#${item.toLowerCase().replace(" ", "")}`}
-                onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-lg hover:bg-yellow-300 hover:text-gray-900 transition"
+        {/* Desktop */}
+        <ul className="hidden md:flex gap-8 text-white font-medium">
+          {links.map((link) => (
+            <li key={link.id}>
+              <button
+                onClick={() => handleClick(link.id)}
+                className="relative group px-2 py-1 transition duration-300 hover:text-cyan-300"
               >
-                {item}
-              </a>
+                {link.name}
+                <span className="absolute left-0 -bottom-1 h-0.5 w-0 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
+              </button>
             </li>
           ))}
         </ul>
-      )}
 
-      {/* Animation keyframes */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fadeIn 0.3s ease-in-out forwards;
-        }
-      `}</style>
+        {/* Mobile button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-white text-3xl transition-transform duration-300 active:scale-90"
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="flex flex-col px-6 py-4 gap-3 bg-black/30 backdrop-blur-xl border-t border-white/10">
+          {links.map((link) => (
+            <li key={link.id}>
+              <button
+                onClick={() => handleClick(link.id)}
+                className="w-full text-left px-4 py-2 rounded-lg text-white hover:bg-cyan-400/20 hover:text-cyan-300 transition"
+              >
+                {link.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }

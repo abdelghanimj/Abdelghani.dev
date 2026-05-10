@@ -23,28 +23,69 @@ export default function Education() {
   ];
 
   return (
-    <section className="education py-16 bg-gray-100">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-12 text-gray-800">Formation</h2>
+    <section className="py-20 bg-gray-950 text-white relative overflow-hidden">
 
+      {/* background glow */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 blur-[120px]" />
+
+      <div className="container mx-auto px-4 text-center relative z-10">
+
+        {/* Title */}
+        <h2 className="text-4xl font-bold mb-14">
+          Formation
+          <span className="block w-20 h-1 bg-cyan-400 mx-auto mt-3 rounded-full"></span>
+        </h2>
+
+        {/* Grid */}
         <div className="grid md:grid-cols-3 gap-8">
+
           {educations.map((edu, index) => (
             <div
               key={index}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2"
+              className="
+                relative
+                bg-white/5
+                border border-white/10
+                backdrop-blur-xl
+                p-8
+                rounded-2xl
+                shadow-xl
+                transition-all duration-500
+                hover:scale-105
+                hover:border-cyan-400/40
+                hover:shadow-cyan-500/20
+              "
             >
+
+              {/* icon */}
               <img
                 src={edu.img}
                 alt={edu.title}
-                className="w-20 h-20 mx-auto mb-4"
+                className="w-16 h-16 mx-auto mb-5 opacity-90"
               />
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">
+
+              {/* title */}
+              <h3 className="text-xl font-semibold text-cyan-300 mb-2">
                 {edu.title}
               </h3>
-              <p className="text-gray-500 mb-2">{edu.subtitle}</p>
-              <span className="text-gray-400 font-medium">{edu.year}</span>
+
+              {/* subtitle */}
+              <p className="text-gray-400 mb-3 text-sm">
+                {edu.subtitle}
+              </p>
+
+              {/* year badge */}
+              <span className="inline-block px-3 py-1 text-xs rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+                {edu.year}
+              </span>
+
+              {/* glow effect on hover */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition bg-cyan-400/5 blur-xl"></div>
+
             </div>
           ))}
+
         </div>
       </div>
     </section>
