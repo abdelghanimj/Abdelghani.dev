@@ -22,7 +22,7 @@ export default function About() {
             Développeur Web Full Stack Junior, passionné par la création
             d’applications modernes et performantes avec{" "}
             <span className="text-cyan-300 font-semibold">React</span>,{" "}
-            <span className="text-cyan-300 font-semibold">Spring Boot</span> et
+            <span className="text-cyan-300 font-semibold">Laravel</span> et
             des technologies modernes.
           </p>
 
@@ -34,7 +34,7 @@ export default function About() {
 
           {/* Tags */}
           <div className="flex flex-wrap justify-center gap-3">
-            {["React", "Tailwind", "Spring Boot", "Java", "MySQL"].map(
+            {["React", "Tailwind", "Laravel", "Php", "MySQL"].map(
               (skill) => (
                 <span
                   key={skill}

@@ -25,6 +25,7 @@ import todoRegister from "../assets/TodoList/registerTodo.png";
 import todoDashboardAdmin from "../assets/TodoList/DashboardAdmin.png";
 import todoDashboardUser from "../assets/TodoList/DashboardUser.png";
 import addTask from "../assets/TodoList/addTask.png";
+import { Link } from "react-router-dom";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -49,6 +50,7 @@ export default function Projects() {
         commander,
         productUser,
       ],
+      github:"https://github.com/abdelghanimj/mobile_shop"
     },
 
     {
@@ -57,6 +59,7 @@ export default function Projects() {
       desc: "Site e-commerce avec gestion des produits",
       tech: "Laravel / MySQL",
       images: [],
+      github:"https://github.com/abdelghanimj/"
     },
 
     {
@@ -79,6 +82,7 @@ export default function Projects() {
         todoDashboardUser,
         addTask,
       ],
+      github:"https://github.com/abdelghanimj/todo-IA"
     },
   ];
 
@@ -132,6 +136,25 @@ export default function Projects() {
               <span className="text-xs px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
                 {project.tech}
               </span>
+
+                <a
+  href={project.github}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    text-xs px-3 py-1 rounded-full
+    bg-cyan-500/10
+    border border-cyan-500/20
+    text-cyan-300
+    hover:bg-cyan-500/20
+    transition
+    inline-block mt-3
+  "
+>
+  Voir GitHub
+</a>
+           
+
 
             </div>
           ))}
