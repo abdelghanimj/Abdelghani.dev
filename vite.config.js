@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react-swc";
 
 export default defineConfig({
   plugins: [
@@ -8,9 +8,9 @@ export default defineConfig({
     tailwindcss(),
   ],
 
-  base: "/MyPortfolio/", // 👈 مهم بزاف (اسم repo ديالك)
+  base: "/", // ✅ مهم لـ Vercel
 
   server: {
     port: 3000,
   },
-})
+});
