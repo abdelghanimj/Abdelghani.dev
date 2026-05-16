@@ -40,7 +40,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-2xl text-gray-400">
-            Full Stack Developer | React  • Laravel
+            Full Stack Developer | React • Laravel
           </p>
 
           <p className="max-w-xl text-gray-500 text-sm md:text-base">
@@ -81,7 +81,7 @@ export default function Hero() {
               LinkedIn
             </a>
             <a
-  href="/MyPortfolio/public/cv.pdf"
+  href="/cv.pdf"
   download
   className="
     px-6 py-3 rounded-xl
