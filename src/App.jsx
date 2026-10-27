@@ -6,11 +6,11 @@ import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import "./styles/global.css";
+import "./App.css";
 
 export default function App() {
   return (
-    <div className="bg-gray-950 text-white scroll-smooth overflow-x-hidden">
+    <div className="text-white overflow-x-hidden">
 
       {/* NAVBAR */}
       <Navbar />
