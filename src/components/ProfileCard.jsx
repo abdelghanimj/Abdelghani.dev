@@ -1,108 +1,196 @@
+
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  FiArrowDownRight,
+  FiArrowUpRight,
+  FiCode,
+  FiDownload,
+  FiGithub,
+  FiLayers,
+} from "react-icons/fi";
+
+const technologies = [
+  "React",
+  "Laravel",
+  "PHP",
+  "JavaScript",
+  "Tailwind CSS",
+  "MySQL",
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: "easeOut" },
+  },
+};
+
 export default function ProfileCard() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-gray-950 via-slate-900 to-blue-950 py-24 px-6 rounded-3xl shadow-2xl">
+    <section
+      id="home"
+      className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-slate-950 px-5 py-20 text-white shadow-2xl sm:px-10 sm:py-24 lg:px-16"
+    >
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-cyan-950/40 via-slate-950 to-blue-950/40" />
+      <div className="pointer-events-none absolute -left-32 top-0 -z-10 h-80 w-80 rounded-full bg-cyan-500/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-32 right-0 -z-10 h-96 w-96 rounded-full bg-blue-500/10 blur-[130px]" />
 
-      {/* Soft Glow Background */}
-      <div className="absolute -top-20 -left-20 w-80 h-80 bg-cyan-500/20 rounded-full blur-[120px]" />
-      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-500/20 rounded-full blur-[120px]" />
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center animate-fade-in">
-
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="mx-auto flex max-w-4xl flex-col items-center text-center"
+      >
         {/* Avatar */}
-        <div className="relative group">
-          <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-xl scale-110 opacity-0 group-hover:opacity-100 transition"></div>
+        <motion.div variants={itemVariants} className="relative mb-8">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{
+              duration: 22,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="absolute -inset-2 rounded-full border border-dashed border-cyan-400/40"
+          />
+
+          <div className="absolute -inset-1 rounded-full bg-cyan-400/15 blur-xl" />
 
           <img
             src="https://github.com/abdelghanimj.png"
-            alt="profile"
-            className="
-              w-40 h-40 md:w-44 md:h-44
-              rounded-full
-              object-cover
-              border-4 border-cyan-400/40
-              shadow-xl
-              transition-all duration-500
-              group-hover:scale-105
-              group-hover:rotate-2
-            "
+            alt="Photo de profil d'Abdelghani Moujniba"
+            className="relative h-36 w-36 rounded-full border-4 border-slate-800 object-cover shadow-xl sm:h-44 sm:w-44"
           />
 
-          {/* online dot */}
-          <span className="absolute bottom-3 right-3 w-4 h-4 bg-green-400 rounded-full border-2 border-gray-900 animate-pulse"></span>
-        </div>
+          <span
+            className="absolute bottom-3 right-2 h-4 w-4 rounded-full border-[3px] border-slate-950 bg-emerald-400"
+            title="Profil"
+          />
+        </motion.div>
+
+        {/* Intro label */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2 text-sm text-cyan-300"
+        >
+          <FiCode />
+          <span>Développement web & applications</span>
+        </motion.div>
 
         {/* Name */}
-        <h1 className="mt-6 text-4xl md:text-5xl font-bold text-white tracking-tight">
-          Abdelghani <span className="text-cyan-400">Moujniba</span>
-        </h1>
+        <motion.h1
+          variants={itemVariants}
+          className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl"
+        >
+          Bonjour, je suis
+          <span className="mt-2 block bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
+            Abdelghani Moujniba
+          </span>
+        </motion.h1>
 
         {/* Role */}
-        <p className="mt-3 text-cyan-300 text-lg md:text-xl font-medium">
-          Full Stack Developer
-        </p>
+        <motion.p
+          variants={itemVariants}
+          className="mt-5 text-lg font-medium text-slate-300 sm:text-xl"
+        >
+          Développeur <span className="text-cyan-400">Full Stack Junior</span>
+        </motion.p>
 
         {/* Description */}
-        <p className="mt-5 max-w-2xl text-gray-400 leading-relaxed text-sm md:text-base">
-          Passionné par le développement web moderne et la création
-          d’applications performantes et élégantes avec React, Spring Boot et Tailwind CSS.
-        </p>
+        <motion.p
+          variants={itemVariants}
+          className="mt-5 max-w-2xl text-sm leading-7 text-slate-400 sm:text-base"
+        >
+          Diplômé en développement digital, je m'intéresse à la création
+          d'applications web modernes avec React et Laravel. Je continue à
+          développer mes compétences à travers des projets pratiques et je
+          recherche une opportunité pour apprendre et contribuer à des projets
+          concrets.
+        </motion.p>
 
-        {/* Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mt-8">
-
-          <a
+        {/* Actions */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row sm:gap-4"
+        >
+          <motion.a
             href="#projects"
-            className="
-              px-6 py-3 rounded-xl
-              bg-cyan-500
-              text-gray-900 font-semibold
-              shadow-lg shadow-cyan-500/20
-              hover:bg-cyan-400
-              hover:scale-105
-              transition
-            "
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-400 px-6 py-3.5 font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition-colors hover:bg-cyan-300"
           >
             Voir mes projets
-          </a>
+            <FiArrowUpRight className="h-5 w-5" />
+          </motion.a>
 
-          <a
+          <motion.a
             href="#contact"
-            className="
-              px-6 py-3 rounded-xl
-              bg-white/5 border border-white/10
-              text-white backdrop-blur-xl
-              hover:bg-white/10
-              hover:scale-105
-              transition
-            "
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-6 py-3.5 font-semibold text-white transition-colors hover:border-cyan-400/30 hover:bg-white/[0.08]"
           >
-            Contact
-          </a>
-        </div>
+            Me contacter
+            <FiArrowDownRight className="h-5 w-5" />
+          </motion.a>
 
-        {/* Tech stack */}
-        <div className="flex flex-wrap justify-center gap-3 mt-10">
-          {["React", "Spring Boot", "Laravel", "Tailwind", "MySQL", "JS"].map(
-            (tech) => (
-              <span
+          <motion.a
+            href="https://github.com/abdelghanimj"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+            aria-label="Consulter mon profil GitHub"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-5 py-3.5 text-slate-300 transition-colors hover:border-cyan-400/30 hover:text-cyan-300"
+          >
+            <FiGithub className="h-5 w-5" />
+            GitHub
+          </motion.a>
+        </motion.div>
+
+        {/* Technologies */}
+        <motion.div variants={itemVariants} className="mt-12 w-full">
+          <div className="mb-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+            <FiLayers className="h-4 w-4" />
+            Technologies utilisées
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {technologies.map((tech, index) => (
+              <motion.span
                 key={tech}
-                className="
-                  px-4 py-2 text-sm
-                  rounded-full
-                  bg-white/5 border border-white/10
-                  text-gray-300
-                  hover:text-cyan-300
-                  hover:border-cyan-400/40
-                  transition
-                "
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7 + index * 0.08, duration: 0.3 }}
+                whileHover={{ y: -3 }}
+                className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-slate-300 transition-colors hover:border-cyan-400/30 hover:bg-cyan-400/5 hover:text-cyan-300"
               >
                 {tech}
-              </span>
-            )
-          )}
-        </div>
-      </div>
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.a
+          variants={itemVariants}
+          href="#about"
+          className="mt-12 flex items-center gap-2 text-xs text-slate-500 transition-colors hover:text-cyan-300"
+        >
+          Découvrir mon profil
+          <FiArrowDownRight className="h-4 w-4" />
+        </motion.a>
+      </motion.div>
     </section>
   );
 }

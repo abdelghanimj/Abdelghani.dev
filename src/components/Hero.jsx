@@ -14,7 +14,7 @@ export default function Hero() {
           <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-2xl scale-110 opacity-0 group-hover:opacity-100 transition"></div>
 
           <img
-            src="https://github.com/abdelghanimj/abdelghani-dev.github.io/blob/main/public/moujniba.jpg?raw=true"
+            src="https://github.com/abdelghanimj/abdelghani-dev.github.io/blob/main/public/Moujniba.jpg?raw=true"
             alt="Profil"
             className="
               w-44 h-44 md:w-52 md:h-52
@@ -66,7 +66,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/abdelghani-moujniba/"
               target="_blank"
               className="
                 px-6 py-3 rounded-xl
@@ -81,7 +81,7 @@ export default function Hero() {
               LinkedIn
             </a>
             <a
-  href="/cv.pdf"
+  href="/CV_ATS.pdf"
   download
   className="
     px-6 py-3 rounded-xl
